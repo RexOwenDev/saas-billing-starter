@@ -1,0 +1,29 @@
+{
+  "id": "evt_test_invoice_payment_succeeded",
+  "object": "event",
+  "api_version": "2025-01-27.acacia",
+  "created": 1714000100,
+  "livemode": false,
+  "type": "invoice.payment_succeeded",
+  "data": {
+    "object": {
+      "id": "in_test_001",
+      "object": "invoice",
+      "customer": "cus_test_001",
+      "subscription": "sub_test_001",
+      "status": "paid",
+      "amount_due": 2900,
+      "amount_paid": 2900,
+      "amount_remaining": 0,
+      "currency": "usd",
+      "period_start": 1714000000,
+      "period_end": 1716678400,
+      "due_date": null,
+      "hosted_invoice_url": "https://invoice.stripe.com/i/test",
+      "invoice_pdf": "https://pay.stripe.com/invoice/test/pdf",
+      "description": null,
+      "attempt_count": 1,
+      "status_transitions": { "paid_at": 1714000100 }
+    }
+  }
+}

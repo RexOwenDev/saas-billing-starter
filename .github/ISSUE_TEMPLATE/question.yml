@@ -1,0 +1,28 @@
+name: Question
+description: Ask a question about usage, configuration, or architecture
+title: "[Question]: "
+labels: ["question"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before asking, please check:
+        - [README.md](../../README.md) — quick start and FAQ
+        - [SETUP.md](../../SETUP.md) — full environment setup guide
+        - [docs/](../../docs/) — architecture, Stripe events, billing concepts
+        - Existing issues (search for your question first)
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+      description: What do you want to know?
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: What are you trying to build? What have you already tried?

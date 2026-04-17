@@ -1,0 +1,99 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  type-check:
+    name: Type check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run TypeScript type check
+        run: npm run type-check
+
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Vitest
+        run: npm test -- --reporter=verbose
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+        continue-on-error: false
+
+  build:
+    name: Build check
+    runs-on: ubuntu-latest
+    needs: [type-check, test]
+    env:
+      # Stub env vars so Next.js build doesn't fail on missing vars.
+      # These are not real keys — build only, no network calls are made.
+      STRIPE_SECRET_KEY: sk_test_stub_for_build_check_only
+      NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: pk_test_stub_for_build_check_only
+      STRIPE_WEBHOOK_SECRET: whsec_stub_for_build_check_only
+      STRIPE_FREE_MONTHLY_PRICE_ID: price_stub
+      STRIPE_PRO_MONTHLY_PRICE_ID: price_stub
+      STRIPE_PRO_ANNUAL_PRICE_ID: price_stub
+      STRIPE_ENTERPRISE_MONTHLY_PRICE_ID: price_stub
+      STRIPE_ENTERPRISE_ANNUAL_PRICE_ID: price_stub
+      STRIPE_API_CALLS_PRICE_ID: price_stub
+      NEXT_PUBLIC_SUPABASE_URL: https://stub.supabase.co
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: eyJzdHViIjoiYW5vbiIsInR5cGUiOiJKV1QifQ.stub
+      SUPABASE_SERVICE_ROLE_KEY: eyJzdHViIjoic2VydmljZSIsInR5cGUiOiJKV1QifQ.stub
+      NEXT_PUBLIC_APP_URL: http://localhost:3000
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Next.js build
+        run: npm run build

@@ -1,0 +1,58 @@
+name: Feature Request
+description: Suggest a new feature or enhancement
+title: "[Feature]: "
+labels: ["enhancement", "needs-triage"]
+assignees:
+  - RexOwenDev
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a feature! Please describe the use case — not just the solution — so we can find the best implementation together.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / use case
+      description: What problem does this feature solve? What can you not do today?
+      placeholder: I want to support per-seat pricing but the current PLAN_CONFIGS only supports flat-rate tiers…
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: How would you like this to work? Be as specific as you can.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: What other approaches have you considered? Why did you reject them?
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      description: Which part of the codebase does this affect?
+      options:
+        - Stripe integration (src/lib/stripe/)
+        - Supabase / database (supabase/migrations/, src/lib/supabase/)
+        - UI components (src/components/billing/)
+        - API routes (src/app/api/)
+        - Billing utilities (src/lib/billing/)
+        - Type system (src/types/)
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Mockups, examples from other projects, related issues, or anything else that helps.

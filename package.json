@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "seed:stripe": "npx tsx scripts/seed-stripe-products.ts",
+    "generate:hero": "node scripts/generate-hero.mjs",
+    "generate:diagrams": "npx tsx scripts/generate-diagrams.ts",
+    "generate:all": "npm run generate:diagrams && npm run generate:hero"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.0",
