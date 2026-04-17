@@ -11,7 +11,7 @@
 
 Production-grade SaaS billing scaffold. Drop it into any Next.js 16 project to get subscription management, metered usage, Stripe webhooks with idempotency, and a billing portal — all wired to Supabase with full Row-Level Security.
 
-> **Portfolio showcase.** This starter is intentionally a skeleton — Stripe and Supabase credentials are never committed, API routes return structured stubs, and no live billing traffic is generated. Swap in real keys and activate the live calls to go production.
+> **Portfolio showcase.** The API layer, webhook handler, and billing utilities are fully implemented production patterns — no credentials are committed and no live billing traffic is generated. The UI pages use clearly annotated stub data to illustrate the integration points your application would wire up. Add real Stripe/Supabase credentials and connect the stub data calls to run it live.
 
 ---
 

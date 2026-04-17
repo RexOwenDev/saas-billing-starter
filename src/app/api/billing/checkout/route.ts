@@ -31,8 +31,9 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   const { priceId, successUrl, cancelUrl } = parsed.data;
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
-  // Get the user's org (stub: real implementation queries organization_members)
-  const orgId = user.id; // Simplified for skeleton; use real org lookup in production
+  // Skeleton: maps user directly to org. A real multi-tenant app queries
+  // organization_members to resolve the active org for this user.
+  const orgId = user.id;
 
   try {
     const session = await createCheckoutSession({

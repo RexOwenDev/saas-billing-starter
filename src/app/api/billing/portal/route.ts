@@ -11,7 +11,9 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
   }
 
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
-  const orgId = user.id; // Simplified; use real org lookup in production
+  // Skeleton: maps user directly to org. A real multi-tenant app queries
+  // organization_members to resolve the active org for this user.
+  const orgId = user.id;
 
   try {
     const { url } = await createPortalSession({
