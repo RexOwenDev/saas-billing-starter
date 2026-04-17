@@ -17,15 +17,19 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-eval' 'unsafe-inline'",
+      // 'unsafe-eval' is required by webpack HMR in dev only; omitted in production
+    process.env.NODE_ENV === "development"
+      ? "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://js.stripe.com"
+      : "script-src 'self' 'unsafe-inline' https://js.stripe.com",
       "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' blob: data:",
+      "img-src 'self' blob: data: https://*.stripe.com",
       "font-src 'self'",
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self'",
       "frame-ancestors 'none'",
-      "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.stripe.com",
+      "frame-src https://js.stripe.com https://hooks.stripe.com",
+      "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.stripe.com https://r.stripe.com",
       "upgrade-insecure-requests",
     ].join("; "),
   },

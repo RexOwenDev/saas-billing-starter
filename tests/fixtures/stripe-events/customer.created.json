@@ -1,0 +1,41 @@
+{
+  "id": "evt_test_customer_created",
+  "object": "event",
+  "api_version": "2025-01-27.acacia",
+  "created": 1700000500,
+  "livemode": false,
+  "pending_webhooks": 1,
+  "request": { "id": "req_test", "idempotency_key": null },
+  "type": "customer.created",
+  "data": {
+    "object": {
+      "id": "cus_test_002",
+      "object": "customer",
+      "address": null,
+      "balance": 0,
+      "created": 1700000500,
+      "currency": null,
+      "default_source": null,
+      "delinquent": false,
+      "description": null,
+      "discount": null,
+      "email": "newuser@example.com",
+      "invoice_prefix": "AB1234",
+      "invoice_settings": {
+        "custom_fields": null,
+        "default_payment_method": null,
+        "footer": null,
+        "rendering_options": null
+      },
+      "livemode": false,
+      "metadata": { "org_id": "org_test_002" },
+      "name": "New User",
+      "next_invoice_sequence": 1,
+      "phone": null,
+      "preferred_locales": [],
+      "shipping": null,
+      "tax_exempt": "none",
+      "test_clock": null
+    }
+  }
+}

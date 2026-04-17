@@ -1,0 +1,53 @@
+{
+  "id": "evt_test_subscription_deleted",
+  "object": "event",
+  "api_version": "2025-01-27.acacia",
+  "created": 1700000300,
+  "livemode": false,
+  "pending_webhooks": 1,
+  "request": { "id": "req_test", "idempotency_key": null },
+  "type": "customer.subscription.deleted",
+  "data": {
+    "object": {
+      "id": "sub_test_001",
+      "object": "subscription",
+      "cancel_at": null,
+      "cancel_at_period_end": false,
+      "canceled_at": 1700000299,
+      "collection_method": "charge_automatically",
+      "created": 1700000000,
+      "currency": "usd",
+      "current_period_end": 1702678400,
+      "current_period_start": 1700000000,
+      "customer": "cus_test_001",
+      "ended_at": 1700000299,
+      "items": {
+        "object": "list",
+        "data": [
+          {
+            "id": "si_test_001",
+            "object": "subscription_item",
+            "price": {
+              "id": "price_pro_monthly",
+              "object": "price",
+              "active": true,
+              "currency": "usd",
+              "recurring": { "interval": "month", "interval_count": 1, "usage_type": "licensed" },
+              "unit_amount": 2900
+            },
+            "quantity": 1,
+            "subscription": "sub_test_001"
+          }
+        ],
+        "has_more": false,
+        "total_count": 1
+      },
+      "latest_invoice": "in_test_001",
+      "livemode": false,
+      "metadata": { "org_id": "org_test_001" },
+      "status": "canceled",
+      "trial_end": null,
+      "trial_start": null
+    }
+  }
+}
